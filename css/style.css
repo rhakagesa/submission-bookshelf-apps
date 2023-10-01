@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap");
+
+:root {
+  --color1: #9a3b3b;
+  --color2: #c08261;
+  --color3: #e2c799;
+  --color4: #f2ecbe;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--color4);
+}
+main {
+  display: flex;
+  justify-content: space-around;
+}
+
+header {
+  padding-block: 2rem;
+  text-align: center;
+  background-color: var(--color1);
+  color: var(--color4);
+  font-size: larger;
+}
+
+#formInputAndSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+  color: var(--color1);
+}
+#formInput {
+  margin-block-start: 2rem;
+  margin-block-end: 1rem;
+  border: 5px solid var(--color1);
+  border-radius: 0.5rem;
+}
+#formInput > h2 {
+  padding: 1rem;
+  background-color: var(--color1);
+  color: var(--color4);
+  text-align: center;
+}
+#inputBook {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+}
+.form > input {
+  border: 3px solid var(--color3);
+  border-radius: 0.5rem;
+  font-size: larger;
+}
+#inputBook > input {
+  background-color: var(--color1);
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  margin-inline: auto;
+  margin-block-start: 1rem;
+  color: var(--color4);
+  justify-self: center;
+  font-weight: 700;
+  font-size: large;
+}
+
+#formSearch {
+  border: 5px solid var(--color1);
+  border-radius: 0.5rem;
+  margin-block-end: 2rem;
+  padding: 1rem;
+}
+#cariBuku {
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+}
+
+#searchButton {
+  background-color: var(--color1);
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  margin-inline: auto;
+  color: var(--color4);
+  justify-self: center;
+  font-weight: 700;
+  font-size: large;
+}
+
+#finishReadUnfinishRead {
+  align-items: center;
+  font-weight: 700;
+  color: var(--color1);
+  margin-block-start: 2rem;
+  margin-block-end: 1rem;
+  border: 5px solid var(--color1);
+  border-radius: 0.5rem;
+  margin-inline: 5rem;
+  height: max-content;
+}
+
+#finishReadUnfinishRead > h2 {
+  background-color: var(--color1);
+  color: var(--color4);
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.container-book {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: white;
+  border: 5px solid var(--color2);
+  color: var(--color1);
+  margin: 1rem;
+  font-weight: 400;
+}
+
+.read-button {
+  background-color: var(--color2);
+  color: var(--color4);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-block-start: 0.5rem;
+}
+.read-again-button {
+  background-color: var(--color2);
+  color: var(--color4);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-block-start: 0.5rem;
+}
+.remove-button {
+  background-color: var(--color2);
+  color: var(--color4);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-block-start: 0.5rem;
+  margin-inline-start: 0.3rem;
+}
+
+footer {
+  background-color: var(--color1);
+  padding-block: 1rem;
+  color: var(--color4);
+  text-align: center;
+  font-size: large;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf Apps</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Bookshelf Apps - Aplikasi Rak Buku</h1>
+    </header>
+    <main>
+      <!-- Section Unfinish Read -->
+      <section id="finishReadUnfinishRead">
+        <h2>List Buku Belum Dibaca</h2>
+        <div id="unfinishRead"></div>
+      </section>
+
+      <!-- Section Input Buku dan Pencarian -->
+      <section id="formInputAndSearch">
+        <div id="formInput">
+          <h2>Masukkan Data Buku</h2>
+          <form id="inputBook">
+            <div class="form">
+              <label for="inputJudul">Judul</label><br />
+              <input type="text" id="inputJudul" name="judul" required /><br />
+            </div>
+            <div class="form">
+              <label for="inputPenulis">Penulis</label><br />
+              <input
+                type="text"
+                id="inputPenulis"
+                name="inputPenulis"
+                required
+              /><br />
+            </div>
+            <div class="form">
+              <label for="inputTahun">Tahun</label><br />
+              <input
+                type="text"
+                id="inputTahun"
+                name="inputTahun"
+                maxlength="4"
+                required
+              /><br />
+            </div>
+            <label for="finishRead"
+              >Sudah baca
+              <input type="checkbox" name="finishRead" id="sudahBaca"
+            /></label>
+
+            <input
+              type="submit"
+              value="Masukkan buku ke rak Belum dibaca"
+              name="inputButton"
+            />
+          </form>
+        </div>
+        <div id="formSearch">
+          <form id="cariBuku">
+            <div class="form">
+              <label for="cariBuku">Cari Buku</label><br />
+              <input type="text" name="caribuku" id="cariBuku" required /><br />
+            </div>
+            <input type="submit" value="Pencarian" id="searchButton" />
+          </form>
+        </div>
+      </section>
+
+      <!-- Section Finish Read -->
+      <section id="finishReadUnfinishRead">
+        <h2>List Buku Sudah Dibaca</h2>
+        <div id="finishRead"></div>
+      </section>
+    </main>
+    <footer>
+      <p>&#169; 2023 created by Rhaka Gemilang</p>
+    </footer>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
