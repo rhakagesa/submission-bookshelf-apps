@@ -1,28 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
   const formInputBook = document.getElementById("inputBook");
+  const checkbox = document.getElementById("sudahBaca");
   formInputBook.addEventListener("submit", (ev) => {
     ev.preventDefault();
-    inputBelumBaca();
+    if (checkbox.checked) {
+      inputSudahBaca();
+    } else {
+      inputBelumBaca();
+    }
   });
 
-  //Meload data sebelumnya ketika browser selesai menampilkan semua HTML
   if (lokalStorage()) {
     loadDataLokalStorage();
   }
 });
 
-const objBuku = (id, title, author, year, isCompleted) => {
+const objBuku = (id, title, author, year, isComplete) => {
   return {
     id,
     title,
     author,
     year,
-    isCompleted,
+    isComplete,
   };
 };
 
-const SAVED_EVENT = new Event("simpan-buku");
 const STORAGE_KEY = "BOOKSHELF_APPS";
+const SAVED_EVENT = new Event("simpan-data");
 
 const lokalStorage = () => {
   if (typeof Storage === undefined) {
@@ -39,10 +43,6 @@ const simpanData = () => {
     document.dispatchEvent(SAVED_EVENT);
   }
 };
-
-document.addEventListener("simpan-buku", () => {
-  console.log(localStorage.getItem(STORAGE_KEY));
-});
 
 const loadDataLokalStorage = () => {
   const serializedData = localStorage.getItem(STORAGE_KEY);
@@ -66,7 +66,20 @@ const inputBelumBaca = () => {
   const author = document.getElementById("inputPenulis").value;
   const year = document.getElementById("inputTahun").value;
 
-  const buatObjBuku = objBuku(id, title, author, year, false);
+  const buatObjBuku = objBuku(id, title, author, parseInt(year), false);
+  listBuku.push(buatObjBuku);
+
+  document.dispatchEvent(renderEvent);
+  simpanData();
+};
+
+const inputSudahBaca = () => {
+  const id = +new Date();
+  const title = document.getElementById("inputJudul").value;
+  const author = document.getElementById("inputPenulis").value;
+  const year = document.getElementById("inputTahun").value;
+
+  const buatObjBuku = objBuku(id, title, author, parseInt(year), true);
   listBuku.push(buatObjBuku);
 
   document.dispatchEvent(renderEvent);
@@ -82,7 +95,7 @@ document.addEventListener("render-buku", () => {
 
   for (const sebuahBuku of listBuku) {
     const elementBuku = buatBuku(sebuahBuku);
-    if (!sebuahBuku.isCompleted) unfinishRead.append(elementBuku);
+    if (!sebuahBuku.isComplete) unfinishRead.append(elementBuku);
     else finishRead.append(elementBuku);
   }
 });
@@ -103,7 +116,7 @@ const buatBuku = (objBuku) => {
   container.append(textContainer);
   container.setAttribute("id", `idbuku-${objBuku.id}`);
 
-  if (objBuku.isCompleted) {
+  if (objBuku.isComplete) {
     const bacaLagi = document.createElement("button");
     bacaLagi.innerText = "Baca Lagi";
     bacaLagi.classList.add("read-again-button");
@@ -158,7 +171,7 @@ const sudahBacaBuku = (objBukuID) => {
 
   if (targetBuku == null) return;
 
-  targetBuku.isCompleted = true;
+  targetBuku.isComplete = true;
   document.dispatchEvent(renderEvent);
   simpanData();
 };
@@ -168,7 +181,7 @@ const bacaBukuLagi = (objBukuID) => {
 
   if (targetBuku == null) return;
 
-  targetBuku.isCompleted = false;
+  targetBuku.isComplete = false;
   document.dispatchEvent(renderEvent);
   simpanData();
 };
@@ -191,4 +204,30 @@ const hapusBukuDariRak = (objBukuID) => {
   listBuku.splice(targetBuku, 1);
   document.dispatchEvent(renderEvent);
   simpanData();
+};
+
+const formCariBuku = document.getElementById("cariBuku");
+formCariBuku.addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  const katakunci = document.getElementById("kataKunci").value.toLowerCase();
+  cariDanTampilkanBuku(katakunci);
+});
+
+const cariDanTampilkanBuku = (katakunci) => {
+  const unfinishRead = document.getElementById("unfinishRead");
+  const finishRead = document.getElementById("finishRead");
+
+  unfinishRead.innerHTML = "";
+  finishRead.innerHTML = "";
+
+  for (const sebuahBuku of listBuku) {
+    const judul = sebuahBuku.title.toLowerCase();
+    const penulis = sebuahBuku.author.toLowerCase();
+
+    if (judul.includes(katakunci) || penulis.includes(katakunci)) {
+      const elementBuku = buatBuku(sebuahBuku);
+      if (!sebuahBuku.isComplete) unfinishRead.append(elementBuku);
+      else finishRead.append(elementBuku);
+    }
+  }
 };

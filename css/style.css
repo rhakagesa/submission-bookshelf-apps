@@ -93,6 +93,7 @@ header {
   justify-self: center;
   font-weight: 700;
   font-size: large;
+  margin-block-start: 1rem;
 }
 
 #finishReadUnfinishRead {
@@ -122,13 +123,13 @@ header {
   border: 5px solid var(--color2);
   color: var(--color1);
   margin: 1rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .read-button {
   background-color: var(--color2);
   color: var(--color4);
-  font-weight: 500;
+  font-weight: 800;
   cursor: pointer;
   border: none;
   border-radius: 0.5rem;
@@ -138,7 +139,7 @@ header {
 .read-again-button {
   background-color: var(--color2);
   color: var(--color4);
-  font-weight: 500;
+  font-weight: 800;
   cursor: pointer;
   border: none;
   border-radius: 0.5rem;
@@ -148,7 +149,7 @@ header {
 .remove-button {
   background-color: var(--color2);
   color: var(--color4);
-  font-weight: 500;
+  font-weight: 800;
   cursor: pointer;
   border: none;
   border-radius: 0.5rem;
